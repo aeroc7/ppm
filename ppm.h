@@ -21,7 +21,7 @@
 #include <vector>
 
 namespace output::ppm {
-struct PPMColor {
+struct alignas(4) PPMColor {
     using col_type = std::uint8_t;
     constexpr PPMColor(col_type r, col_type g, col_type b)
         : r_channel(r), g_channel(g), b_channel(b) {}
@@ -41,7 +41,7 @@ private:
     col_type r_channel{};
     col_type g_channel{};
     col_type b_channel{};
-} __attribute__((aligned(4)));
+};
 
 class PPMOutput {
 public:
